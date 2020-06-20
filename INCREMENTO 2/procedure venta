@@ -1,0 +1,55 @@
+USE [frodriguez]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_venta_insertar]    Script Date: 19/06/2020 22:33:00 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[sp_venta_insertar]
+
+@fechaventa date
+,@idcliente smallint
+,@idempleado smallint
+
+,@serie varchar(6)
+,@numero varchar(6)
+,@tipo_comprobante char(1)
+,@igv decimal(18,2)
+
+
+,@idventa int OUT
+
+AS
+
+INSERT INTO 
+[dbo].[venta]
+(
+fechaventa
+,idcliente 
+,idempleado
+
+,serie
+,numero
+,tipo_comprobante
+,igv
+ ) 
+VALUES(
+
+@fechaventa
+,@idcliente 
+,@idempleado
+
+,@serie
+,@numero
+,@tipo_comprobante
+,@igv
+
+)
+
+SET @idventa = SCOPE_IDENTITY()
+
+
+GO

@@ -1,0 +1,30 @@
+using Rodriguez.BusinessLogicLayer;
+using Rodriguez.Reports;
+using System;
+using System.Windows.Forms;
+
+
+
+namespace Rodriguez.PresentationLayer
+{
+    public partial class FrmReporteClienteNatural : Form
+    {
+
+        public DateTime fechaIni;
+        public DateTime fechaFin;
+        public FrmReporteClienteNatural()
+        {
+            InitializeComponent();
+        }
+
+        private void FrmReporteClienteNatural_Load(object sender, EventArgs e)
+        {
+            frodriguezDataSet1 ds = new frodriguezDataSet1();
+            ReporteBLL reporteBLL = new ReporteBLL();
+            ds = reporteBLL.listarClientesNatural(fechaIni, fechaFin);
+            ReporteClienteNatural rpt = new ReporteClienteNatural();
+            rpt.SetDataSource(ds);
+            crystalReportViewer1.ReportSource = rpt;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+USE [frodriguez]
+GO
+
+DECLARE @RC int
+DECLARE @parFechaDeRegistroDesde date
+DECLARE @parFechaDeRegistroHasta date
+
+-- TODO: Set parameter values here.
+
+EXECUTE @RC = [dbo].[sp_cliente_listar_entre_fechas_natural] 
+   @parFechaDeRegistroDesde
+  ,@parFechaDeRegistroHasta
+GO
+
+
